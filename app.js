@@ -1,15 +1,19 @@
-let port = 3000;
-var express = require('express')
-var app = express();
-var path = require('path');
+require('dotenv').config();
+const express = require('express')
+const app = express();
+const path = require('path')
 //sever
-var sever = app.listen(port, () => {
-    console.log(`connected ${port}`);
+const sever = app.listen(process.env.PORT, () => {
+    console.log(`connected ${process.env.PORT}`);
 })
+//view engine
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.set('view cache', true);
 //static
 app.use('/', express.static('public'));
 //io
-var io = require('socket.io')(sever);
+const io = require('socket.io')(sever);
 require('./socketIO')(io);
 // route
 app.get('/', (req, res) => {

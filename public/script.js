@@ -1,12 +1,15 @@
 function getmsg() {
-    return msg = {
+    return {
         name: $('#name').val(),
-        msg: $('#m').val()
+        msg: $('#m').val(),
+        room: $('#pool').val()
     }
 }
+function getroom() {
+    return { room: $('#pool').val() };
+}
 $(function () {
-    var socket = io();
-
+    let socket = io();
     $('form').submit(function (e) {
         e.preventDefault(); // prevents page reloading
         socket.emit('message', getmsg());
@@ -24,9 +27,12 @@ $(function () {
     });
     $('#m').on("click", function () {
         socket.emit('typing', getmsg())
-    }
-    );
+    });
     socket.on('typing', (data) => {
         $('#feedback').html(`<strong>${data.name}</strong> is Typing`);
+    })
+    $('#pool').change(function () {
+        $('#Poolname').text($('#pool').val())
+        socket.emit('roomchose', getroom());
     })
 });
