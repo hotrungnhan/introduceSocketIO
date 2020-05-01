@@ -1,2 +1,2 @@
 # introduceSocketIO
-Introduce socket IO and store daa with firebase 
+Introduce socket IO and store data with firebase 
