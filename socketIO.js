@@ -7,12 +7,12 @@ module.exports = function (io) {
                 io.in(data.room).emit('message', { msg: `${data.name} have join ${data.room}` })
             });
         })
-        io.in(socket.rooms).emit('message', { msg: `${socket.id} have join ${socket.room}` })
+        // io.in(socket.rooms).emit('message', { msg: `${socket.id} have join ${socket.room}` })
         socket.on('disconnect', (data) => {
             io.in(data.room).emit('message', { msg: 'SomeOne Disconnected' })
         });
         socket.on('message', (data) => {
-            io.in(data.room).emit('message', data);
+            io.in(data.rooms).emit('message', data);
             console.log(data);
         });
         socket.on('typing', (data) => {
