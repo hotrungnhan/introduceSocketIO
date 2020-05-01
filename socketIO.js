@@ -1,9 +1,13 @@
+const pool = require('./services/pool')
+const mess = require('./services/message')
 module.exports = function (io) {
     io.on('connection', (socket) => {
-        socket.on('roomchose', (data) => {
-            socket.join(data.room, () => {
-                let rooms = Object.keys(socket.rooms);
-                console.log(rooms); // [ <socket.id>, 'room 237' ]
+        socket.on('roomchose', async (data) => {
+            let rooms = Object.keys(socket.rooms);
+            console.log(rooms); // [ <socket.id>, 'room 237' ]
+            await socket.leave(rooms)
+            await socket.join(data.room, () => {
+
                 io.in(data.room).emit('message', { msg: `${data.name} have join ${data.room}` })
             });
         })
@@ -19,4 +23,8 @@ module.exports = function (io) {
             socket.broadcast.to(data.room).emit('typing', data);
         })
     });
+    setInterval(function () {
+        console.clear()
+        console.log(io.sockets.adapter.rooms)
+    },1000);
 }

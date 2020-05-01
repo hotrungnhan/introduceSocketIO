@@ -10,6 +10,10 @@ function getroom() {
 }
 $(function () {
     let socket = io();
+    socket.emit('roomchose', getmsg());
+    $('#Poolname').text($('#pool').val())
+
+    //
     $('form').submit(function (e) {
         e.preventDefault(); // prevents page reloading
         socket.emit('message', getmsg());
