@@ -1,53 +1,189 @@
+/* Fix user-agent */
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+html,
+input {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+    Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+html,
 body {
-  font: 13px Helvetica, Arial;
-}
-
-form {
-  background: #cce4ff;
-  padding: 3px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-form input {
-  border: 0;
-  padding: 10px;
-  width: 70%;
-}
-form .small {
-  padding: 10px;
-  width: 10%;
-}
-
-form button {
-  width: 9%;
-  background: rgb(130, 224, 255);
-  border: none;
-  padding: 10px;
-}
-
-#messages {
-  list-style-type: none;
+  height: 100%;
   margin: 0;
   padding: 0;
 }
-#Poolname {
-  position: sticky;
+
+ul {
+  list-style: none;
+  word-wrap: break-word;
+}
+
+/* Pages */
+.button {
+  color: gray;
+  font-size: 24px;
+  border: 2px solid white;
+  width: 4rem;
+  height: 2rem;
+  border-radius: 2px;
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #000000; /* Green */
+  color: white;
+}
+.pages {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.page {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+/* Login Page */
+
+.login.page {
+  background-color: #000;
+}
+
+.login.page .form {
+  height: 100px;
+  margin-top: -100px;
+  position: absolute;
+
   text-align: center;
-  font-size: 50px;
+  top: 50%;
+  width: 100%;
 }
 
-li {
-  padding: 5px 10px;
+.login.page .form .usernameInput {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #fff;
+  outline: none;
+  padding-bottom: 15px;
+  text-align: center;
+  width: 50%;
 }
 
-li:nth-child(odd) {
-  background: #eee;
+.login.page .title {
+  font-size: 200%;
+}
+
+.login.page .usernameInput {
+  font-size: 200%;
+  letter-spacing: 3px;
+}
+
+.login.page .title,
+.login.page .usernameInput {
+  color: #fff;
+  font-weight: 100;
+}
+
+/* Chat page */
+
+.chat.page {
+  display: none;
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+/* Font */
+
+.messages {
+  font-size: 100%;
+}
+.userType {
+  overflow: auto;
+  width: 100%;
+}
+.messagesBoxSelf {
+  position: relative;
+  clear: both;
+  border-radius: 3em;
+  max-width: 50%;
+  box-sizing: content-box;
+  background-color: #bfbfbf;
+  margin: 0.2em;
+  padding: 1em;
+  left: 0px;
+}
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
+.center {
+  text-align: center;
+}
+.inputMessage {
+  font-size: 100%;
+}
+
+.log {
+  color: gray;
+  font-size: 70%;
+  margin: 5px;
+  text-align: center;
+}
+
+/* Box Chat */
+
+.chatArea {
+  height: 100%;
+  padding-bottom: 60px;
+}
+.chatBox {
+  padding: 0rem 2rem 0rem 2rem;
+  height: 100%;
+  overflow-y: scroll;
+}
+.messages {
+  height: 100%;
+  margin: 0;
+  padding: 10px 20px 10px 20px;
+}
+.messages ::-webkit-scrollbar {
+  display: none;
+}
+.message.typing .messageBody {
+  color: gray;
+}
+
+.username {
+  font-weight: 700;
+  overflow: hidden;
+  padding-right: 15px;
+  text-align: right;
+}
+
+/* Input chat*/
+
+.inputMessage {
+  border: 10px solid #000;
+  bottom: 0;
+  height: 60px;
+  left: 0;
+  outline: none;
+  padding-left: 10px;
+  position: absolute;
+  right: 0;
+  width: 100%;
 }

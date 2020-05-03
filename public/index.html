@@ -4,22 +4,28 @@
 <head>
   <title>Socket.IO chat</title>
   <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-  <div id="Poolname"> </div>
-  <ul id="messages">
+  <ul class="pages">
+    <li class="login page">
+      <div class="form">
+        <h3 class="title">What's your nickname?</h3>
+        <input class="usernameInput" type="text" maxlength="14" placeholder="Guest">
+        <button class="button" type="submit"></button>
+      </div>
+    </li>
+    <li class="chat page">
+      <div class="chatArea">
+        <ul class="chatBox"></ul>
+      </div>
+      <input class="inputMessage" placeholder="Type here...">
+    </li>
   </ul>
-  <div id="feedback"></div>
-  <form action="">
-    <input id="name" class="small" autocomplete="off" placeholder="user name" value="Ghest" />
-    <input id="pool" class="small" autocomplete="off" placeholder="Pool name" value="POOL" />
-    <input id="m" autocomplete="off" placeholder="text here" />
-    <button>Send</button>
-  </form>
 </body>
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="script.js"></script>
+<script src="main.js"></script>
 
 </html>

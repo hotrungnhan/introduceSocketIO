@@ -15,7 +15,10 @@ app.use('/', express.static('public'));
 //io
 const io = require('socket.io')(sever);
 require('./socketIO')(io);
+//redis
+// const redis = require("redis");
+// const client = redis.createClient();
+// require('./redis')(client);
 // route
-app.get('/', (req, res) => {
-    res.sendFile('index.html');
-});
+const index = require('./routes/index')
+app.use(index);
